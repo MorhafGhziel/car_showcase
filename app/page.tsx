@@ -23,13 +23,12 @@ export default async function Home() {
           <p>Explore the cars you might like</p>
         </div>
 
-        <div className="home__filters">
+        <div className="home__filters flex max-sm:flex-col flex-row ">
           <SearchBar />
-        </div>
-
-        <div className="home__filter-container">
-          <CustomFilter />
-          <CustomFilter />
+          <div className="home__filter-container ">
+            <CustomFilter />
+            <CustomFilter />
+          </div>
         </div>
       </div>
 
