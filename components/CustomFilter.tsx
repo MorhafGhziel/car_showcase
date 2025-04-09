@@ -1,6 +1,6 @@
 "use client";
 
-import { CustomFilterProps } from "@/types";
+import { CustomFilterProps, OptionProps } from "@/types";
 import {
   Listbox,
   ListboxButton,
@@ -13,14 +13,12 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { updateSearchParams } from "@/utils";
 
-const CustomFilter = ({ title, options }: CustomFilterProps) => {
+const CustomFilter = ({ title, options }: CustomFilterProps): JSX.Element => {
   const router = useRouter();
+  const [selected, setSelected] = useState<OptionProps>(options[0]);
 
-  const [selected, setSelected] = useState(options[0]);
-
-  const handleUpdateParams = (e: { title: string; value: string }) => {
+  const handleUpdateParams = (e: OptionProps) => {
     const newPathName = updateSearchParams(title, e.value.toLowerCase());
-
     router.push(newPathName);
   };
 
