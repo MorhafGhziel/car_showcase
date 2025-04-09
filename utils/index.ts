@@ -1,3 +1,5 @@
+import { FilterProps } from "@/types";
+
 export async function fetchCars() {
   const headers = {
     "X-RapidAPI-Key": "9ec58aa9b3mshab1c89d4534f353p191b72jsnadeea3be2111",
@@ -5,7 +7,7 @@ export async function fetchCars() {
   };
 
   const response = await fetch(
-    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?model=corolla`,
+    `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?&model=Corolla`,
     { headers: headers }
   );
   const result = await response.json();
@@ -26,4 +28,12 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   const rentalRatePerDay = basePricePerDay + mileageRate + ageRate;
 
   return rentalRatePerDay.toFixed(0);
+};
+
+export const updateSearchParams = (type: string, value: string) => {
+  const searchParams = new URLSearchParams(window.location.search);
+
+  searchParams.set(type, value);
+
+  return `${window.location.pathname}?${searchParams.toString()}`;
 };
